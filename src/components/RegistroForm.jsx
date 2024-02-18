@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ListadoPaises from './ListadoPaises';
-import { registerUser } from '../redux/authSlice';
+import { registerStart,registerSuccess,registerFailure } from '../redux/authSlice';
 
 const RegistroForm = () => {
   const dispatch = useDispatch();
@@ -12,10 +12,38 @@ const RegistroForm = () => {
     pais: '', 
     caloriasDiarias: 0,
   });
-
+const registerUser = async()=>{
+    try {
+      dispatch(registerStart());
+  
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+  
+      const raw = JSON.stringify(formData);
+  
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+  
+      const response = await fetch('https://calcount.develotion.com/usuarios.php', requestOptions);
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+  
+      const user = await response.json();
+      dispatch(registerSuccess(user));
+    } catch (error) {
+      dispatch(registerFailure(error.message));
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(registerUser(formData));
+    registerUser();
   };
 
   const handlePaisChange = (selectedPais) => {

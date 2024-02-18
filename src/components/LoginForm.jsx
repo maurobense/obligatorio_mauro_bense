@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../redux/authSlice';
+import { loginStart,loginSuccess,loginFailure } from '../redux/authSlice';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -19,9 +19,37 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser(formData));
+    loginUser();
   };
-
+  const loginUser = async() => {
+    try {
+      dispatch(loginStart());
+  
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+  
+      const raw = JSON.stringify(formData);
+  
+      const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow',
+      };
+  
+      const response = await fetch('https://calcount.develotion.com/login.php', requestOptions);
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message);
+      }
+  
+      const user = await response.json();
+      dispatch(loginSuccess(user));
+    } catch (error) {
+      dispatch(loginFailure(error.message));
+    }
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div>
