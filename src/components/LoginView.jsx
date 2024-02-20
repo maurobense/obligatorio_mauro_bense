@@ -8,9 +8,8 @@ export const LoginView = () => {
         <div className='login-view-background'>
 
         </div>
-    <Link to="/Dashboard"></Link>
-    <LoginForm/>
-    {/* <RegistroForm/> */}
+        <RegistroForm/>
+        <LoginForm/>
     </div>
   )
 }

@@ -14,6 +14,10 @@ const authSlice = createSlice({
     registerSuccess: (state, action) => {
       state.loading = false;
       state.user = action.payload;
+      localStorage.setItem('apiKey',state.user.apiKey)
+      localStorage.setItem('id',state.user.id)
+      localStorage.setItem('calorias',state.user.calorias)
+
     },
     registerFailure: (state, action) => {
       state.loading = false;
@@ -28,6 +32,7 @@ const authSlice = createSlice({
       state.user = action.payload;
       localStorage.setItem('apiKey',state.user.apiKey)
       localStorage.setItem('id',state.user.id)
+      localStorage.setItem('calorias',state.user.calorias)
     },
     loginFailure: (state, action) => {
       state.loading = false;

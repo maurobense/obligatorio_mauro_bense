@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ListadoPaises from './ListadoPaises';
 import { registerStart,registerSuccess,registerFailure } from '../redux/authSlice';
+import { useNavigate } from 'react-router';
+
 
 const RegistroForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     usuario: '',
@@ -34,16 +37,18 @@ const registerUser = async()=>{
         const errorData = await response.json();
         throw new Error(errorData.message);
       }
-  
       const user = await response.json();
       dispatch(registerSuccess(user));
+      if(user.apiKey != null)
+      {
+        navigate('/Dashboard')
+      }
     } catch (error) {
       dispatch(registerFailure(error.message));
     }
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    registerUser();
+  const handleSubmit = async(e) => {
+    await registerUser();
   };
 
   const handlePaisChange = (selectedPais) => {
@@ -59,14 +64,14 @@ const registerUser = async()=>{
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className='form-style'>
       <div>
         <label htmlFor="usuario">Usuario</label>
         <input type="text" id="usuario" name="usuario" onChange={handleChange} />
       </div>
       <div>
         <label htmlFor="contrasena">Contraseña</label>
-        <input type="password" id="contrasena" name="contrasena" onChange={handleChange} />
+        <input type="password" id="contrasena" name="password" onChange={handleChange} />
       </div>
       <div>
         <label htmlFor="pais">País de Residencia</label>
@@ -83,9 +88,9 @@ const registerUser = async()=>{
         />
       </div>
       <div>
-        <input type="submit" value="Registro" />
+        <input type="button" value="Registro" onClick={handleSubmit} />
       </div>
-    </form>
+    </div>
   );
 };
 

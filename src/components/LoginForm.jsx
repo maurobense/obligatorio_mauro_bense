@@ -46,7 +46,6 @@ const LoginForm = () => {
         throw new Error(errorData.message);
       }
       const user = await response.json();
-      console.log(user)
       dispatch(loginSuccess(user));
       if(user.apiKey != null){
         navigate('/Dashboard');

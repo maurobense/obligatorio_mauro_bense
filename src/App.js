@@ -1,6 +1,6 @@
 import store from './redux/storeConfig';
 import { Provider } from 'react-redux';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import { BarraNavegacion } from './components/BarraNavegacion';
 import { LoginView } from './components/LoginView';
 import './estilos.css';
@@ -14,6 +14,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
       <Routes>
+      <Route path='*' element={<Navigate to='/Login' />} />
       <Route path='/Login' element={<LoginView/>}/>
       <Route path='/Dashboard' element={<Dashboard/>}/>
       </Routes>
