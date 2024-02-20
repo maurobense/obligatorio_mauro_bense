@@ -10,10 +10,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { logoutSuccess, logoutFailure } from "../redux/authSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const BarraNavegacion = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -25,6 +27,8 @@ export const BarraNavegacion = () => {
     try {
       localStorage.clear();
       dispatch(logoutSuccess());
+      navigate('/Login');
+
     } catch (error) {
       dispatch(logoutFailure(error.message));
     }

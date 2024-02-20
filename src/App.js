@@ -1,15 +1,24 @@
+import store from './redux/storeConfig';
+import { Provider } from 'react-redux';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { BarraNavegacion } from './components/BarraNavegacion';
 import { LoginView } from './components/LoginView';
 import './estilos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Dashboard } from './components/Dashboard';
 
 
 function App() {
   return (
     <>
-    <BarraNavegacion/>
-    <LoginView/>
+    <Provider store={store}>
+      <BrowserRouter>
+      <Routes>
+      <Route path='/Login' element={<LoginView/>}/>
+      <Route path='/Dashboard' element={<Dashboard/>}/>
+      </Routes>
+      </BrowserRouter>
+    </Provider>
     </>
      );
 }

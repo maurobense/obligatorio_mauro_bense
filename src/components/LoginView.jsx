@@ -1,5 +1,6 @@
 import LoginForm from './LoginForm'
 import RegistroForm from './RegistroForm'
+import { Link } from 'react-router-dom'
 
 export const LoginView = () => {
   return (
@@ -7,6 +8,7 @@ export const LoginView = () => {
         <div className='login-view-background'>
 
         </div>
+    <Link to="/Dashboard"></Link>
     <LoginForm/>
     {/* <RegistroForm/> */}
     </div>

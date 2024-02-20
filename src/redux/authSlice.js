@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -29,7 +28,6 @@ const authSlice = createSlice({
       state.user = action.payload;
       localStorage.setItem('apiKey',state.user.apiKey)
       localStorage.setItem('id',state.user.id)
-
     },
     loginFailure: (state, action) => {
       state.loading = false;

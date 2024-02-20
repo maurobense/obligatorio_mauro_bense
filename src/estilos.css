@@ -14,7 +14,7 @@
   height: 100vh;
   overflow: hidden;
 }
-form{
+.form-style{
   display: flex;
   flex-direction: column;
   min-width: 40%;
@@ -43,7 +43,7 @@ input[type="number"]{
   display: flex;
   background-color: #161616;
 }
-form div{
+.form-style div{
   display: flex;
   flex-direction: column;
   margin: 10px auto;
