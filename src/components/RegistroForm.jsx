@@ -52,7 +52,6 @@ const registerUser = async()=>{
   };
 
   const handlePaisChange = (selectedPais) => {
-    console.log(selectedPais)
     setFormData({ ...formData, pais: selectedPais });
   };
 

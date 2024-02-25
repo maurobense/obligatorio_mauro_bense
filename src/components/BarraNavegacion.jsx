@@ -35,10 +35,6 @@ export const BarraNavegacion = () => {
   };
   return (
     <div className={`side-navbar ${isOpen ? "open" : ""}`}>
-      <div className="profile-section">
-        <img src="profile.jpg" alt="Profile" />
-        <p>Usuario</p>
-      </div>
       <nav>
         <ul>
           <li>

@@ -6,6 +6,7 @@ import { LoginView } from './components/LoginView';
 import './estilos.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Dashboard } from './components/Dashboard';
+import 'leaflet/dist/leaflet.css'
 
 
 function App() {

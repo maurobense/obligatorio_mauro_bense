@@ -13,6 +13,11 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: #161616;
+  color:#c0c0c0;
+}
+.dashboard-container{
+  margin-left: 60px;
 }
 .form-style{
   display: flex;
@@ -37,6 +42,11 @@ input {
 }
 input[type="number"]{
   text-align: center;
+}
+input.btn-danger{
+  width: auto;
+  height: 35px;
+  font-size: 14px;
 }
 .login-view {
   height: 100vh;

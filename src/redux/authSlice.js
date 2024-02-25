@@ -32,7 +32,7 @@ const authSlice = createSlice({
       state.user = action.payload;
       localStorage.setItem('apiKey',state.user.apiKey)
       localStorage.setItem('id',state.user.id)
-      localStorage.setItem('calorias',state.user.calorias)
+      localStorage.setItem('caloriasDiarias',state.user.caloriasDiarias)
     },
     loginFailure: (state, action) => {
       state.loading = false;
