@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+export const calcularCalorias = (cantidad, alimento) => {
+    let calorias = alimento.porcion.substr(-1) == "u"
+    ? parseInt(alimento.calorias) * cantidad
+    : parseInt((cantidad * alimento.calorias) / 100);
+    return calorias;
+  };
 const alimentosSlice = createSlice({
     name: 'alimentos',
     initialState: {
@@ -15,16 +20,7 @@ const alimentosSlice = createSlice({
         },
         fetchAlimentosSuccess: (state, action) => {
             state.loading = false;
-            state.alimentos = action.payload.map(alimento => {
-                const unidad = alimento.porcion.slice(-1);
-                const porcionSinUnidad = alimento.porcion.slice(0, -1);
-                return {
-                    ...alimento,
-                    porcion:parseInt(porcionSinUnidad),
-                    url:`https://calcount.develotion.com/imgs/${alimento.imagen}.png`,
-                    unidad
-                };
-            })
+            state.alimentos = action.payload
         },
         fetchAlimentosFailure: (state, action) => {
             state.loading = false;

@@ -68,26 +68,34 @@ const AgregarRegistroForm = () => {
       const handleCloseToast = () => {
         setShowToast(false);
       };
-    return (
-        <div className='form-style'>
-            <MyToast show={showToast} message={toastMessage} type={toastType} onClose={handleCloseToast}/>
-            <div>
-                <label htmlFor="idAlimento">Alimento</label>
-                <ListadoAlimentos handleAlimentoChange={handleAlimentoChange} />
-            </div>
-            <div>
-                <label htmlFor="cantidad">Cantidad</label>
-                <input type="number" id="cantidad" name="cantidad" onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="fecha">Fecha</label>
-                <input type="date" id="fecha" name="fecha" onChange={handleChange} />
-            </div>
-            <div>
-                <input type="button" value="Agregar registro" onClick={handleSubmit} />
-            </div>
-        </div>
-    )
-}
+      const getCurrentDate = () => {
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = currentDate.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      };
 
-export default AgregarRegistroForm
+  return (
+    <div className='form-style'>
+      <MyToast show={showToast} message={toastMessage} type={toastType} onClose={handleCloseToast} />
+      <div>
+        <label htmlFor="idAlimento">Alimento</label>
+        <ListadoAlimentos handleAlimentoChange={handleAlimentoChange} />
+      </div>
+      <div>
+        <label htmlFor="cantidad">Cantidad</label>
+        <input type="number" id="cantidad" name="cantidad" onChange={handleChange} />
+      </div>
+      <div>
+        <label htmlFor="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" onChange={handleChange} max={getCurrentDate()} />
+      </div>
+      <div>
+        <input type="button" value="Agregar registro" onClick={handleSubmit} />
+      </div>
+    </div>
+  );
+};
+
+export default AgregarRegistroForm;

@@ -6,6 +6,7 @@ import AgregarRegistroForm from './AgregarRegistroForm'
 import ListadoRegistros from './ListadoRegistros'
 import { fetchRegistrosSuccess,fetchRegistrosFailure } from '../redux/alimentosSlice'
 import { useDispatch } from 'react-redux'
+import InformacionCalorias from './InformacionCalorias'
 export const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -42,12 +43,12 @@ export const Dashboard = () => {
     <>
       <div className='dashboard-container'>
         <div className="row">
-          <div className="col-4"><AgregarRegistroForm/></div>
+          <div className="col-4 agregar-container"><AgregarRegistroForm/></div>
           <div className="col-4"></div>
-          <div className="col-4"></div>
+          <div className="col-4"><InformacionCalorias/></div>
         </div>
         <div className="row">
-          <div className="col-4"><ListadoRegistros/></div>
+          <div className="col-4 registros-container"><ListadoRegistros/></div>
           <div className="col-4"></div>
           <div className="col-4"></div>
         </div>
