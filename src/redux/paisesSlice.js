@@ -25,4 +25,16 @@ const paisesSlice = createSlice({
 
 export const { fetchPaisesStart, fetchPaisesSuccess, fetchPaisesFailure } = paisesSlice.actions;
 
+export const getPaises = () => (dispatch) => {
+  dispatch(fetchPaisesStart());
+  fetch("https://calcount.develotion.com/paises.php")
+    .then(response => response.json())
+    .then(result => {
+      dispatch(fetchPaisesSuccess(result.paises));
+    })
+    .catch(error => {
+      dispatch(fetchPaisesFailure(error.message));
+    });
+};
+
 export default paisesSlice.reducer;

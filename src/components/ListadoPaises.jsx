@@ -1,24 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchPaisesStart, fetchPaisesSuccess, fetchPaisesFailure } from '../redux/paisesSlice';
+import { getPaises } from '../redux/paisesSlice';
 import { Form } from 'react-bootstrap';
 
-
-const ListadoPaises = ({handlePaisChange}) => {
+const ListadoPaises = ({ handlePaisChange }) => {
   const dispatch = useDispatch();
   const { paises, loading, error } = useSelector((state) => state.paises);
 
   useEffect(() => {
-    dispatch(fetchPaisesStart());
-
-    fetch("https://calcount.develotion.com/paises.php")
-      .then(response => response.json())
-      .then(result => {
-        dispatch(fetchPaisesSuccess(result.paises));
-      })
-      .catch(error => {
-        dispatch(fetchPaisesFailure(error.message));
-      });
+    dispatch(getPaises());
   }, [dispatch]);
 
   if (loading) {

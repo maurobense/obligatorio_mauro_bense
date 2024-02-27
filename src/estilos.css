@@ -5,7 +5,6 @@
 * {
     padding: 0;
     margin: 0;
-    /* border: 1px solid red; */
   }
 
 #root {
@@ -14,6 +13,7 @@
   height: 100vh;
   background-color: #161616;
   color:#c0c0c0;
+  overflow-y: hidden;
 }
 .dashboard-container{
   margin-left: 60px;

@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { eliminarRegistroSuccess, eliminarRegistroFailure, calcularCalorias } from '../redux/alimentosSlice';
-import { startOfDay, endOfDay, startOfWeek, endOfWeek, startOfMonth, endOfMonth } from 'date-fns';
+import { startOfDay, endOfDay } from 'date-fns';
 import MyToast from './MyToast';
 
 const ListadoRegistros = () => {
