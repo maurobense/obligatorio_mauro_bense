@@ -1,5 +1,4 @@
 import LoginForm from './LoginForm'
-import RegistroForm from './RegistroForm'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 
@@ -13,10 +12,8 @@ export const LoginView = () => {
   return (
     <div className='login-view'>
         <div className='login-view-background'>
-
         </div>
-        <RegistroForm/>
         <LoginForm/>
     </div>
-  )
+  );
 }

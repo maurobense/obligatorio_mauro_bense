@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import ListadoPaises from './ListadoPaises';
 import { registerStart,registerSuccess,registerFailure } from '../redux/authSlice';
 import { useNavigate } from 'react-router';
+import { Link } from "react-router-dom";
 
 
 const RegistroForm = () => {
@@ -89,8 +90,12 @@ const registerUser = async()=>{
       <div>
         <input type="button" value="Registro" onClick={handleSubmit} />
       </div>
+      <div>
+        <p>¿Ya tienes cuenta? <Link to='/Login'>Login</Link></p>
+      </div>
     </div>
   );
 };
 
 export default RegistroForm;
+

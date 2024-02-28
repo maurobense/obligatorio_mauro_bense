@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginStart, loginSuccess, loginFailure } from '../redux/authSlice';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -66,6 +66,9 @@ const LoginForm = () => {
       </div>
       <div>
         <input type="button" value="Iniciar sesión" onClick={handleSubmit} />
+      </div>
+      <div>
+        <p>No tienes cuenta? <Link to='/Registro'>Registrarme</Link></p>
       </div>
     </div>
   );
